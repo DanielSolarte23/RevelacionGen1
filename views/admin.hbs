@@ -1,0 +1,82 @@
+<div class="admin-wrap">
+  <div class="admin-header">
+    <h1>🐉 Panel de Administración</h1>
+    <p>Revelación de Género — Daniel &amp; Lisseth</p>
+  </div>
+
+  <div class="admin-stats">
+    <div class="stat-card">
+      <span class="stat-number">{{stats.totalGuests}}</span>
+      <span class="stat-label">Confirmaciones</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">{{stats.totalPeople}}</span>
+      <span class="stat-label">Personas totales</span>
+    </div>
+    <div class="stat-card stat-boy">
+      <span class="stat-number">{{stats.teamBoy}}</span>
+      <span class="stat-label">💙 Equipo Niño</span>
+    </div>
+    <div class="stat-card stat-girl">
+      <span class="stat-number">{{stats.teamGirl}}</span>
+      <span class="stat-label">💗 Equipo Niña</span>
+    </div>
+  </div>
+
+  {{#if guests.length}}
+  <div class="admin-table-wrap">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Teléfono</th>
+          <th>Asistentes</th>
+          <th>Predicción</th>
+          <th>Confirmó con</th>
+          <th>Fecha</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each guests}}
+        <tr data-id="{{_id}}">
+          <td>{{name}}</td>
+          <td>{{phone}}</td>
+          <td>{{numberOfGuests}}</td>
+          <td class="{{#if (eq prediction 'boy')}}td-boy{{else}}td-girl{{/if}}">
+            {{predictionDisplay}}
+          </td>
+          <td>{{confirmedWithDisplay}}</td>
+          <td>{{getFormattedDate}}</td>
+          <td>
+            <button class="btn-delete" onclick="deleteGuest('{{_id}}', this)">🗑</button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{else}}
+  <p class="admin-empty">Aún no hay confirmaciones.</p>
+  {{/if}}
+</div>
+
+<script>
+async function deleteGuest(id, btn) {
+  if (!confirm('¿Eliminar este invitado?')) return;
+  btn.disabled = true;
+  try {
+    const res = await fetch(`/admin/guests/${id}`, { method: 'DELETE' });
+    const data = await res.json();
+    if (data.success) {
+      btn.closest('tr').remove();
+    } else {
+      alert('Error al eliminar');
+      btn.disabled = false;
+    }
+  } catch {
+    alert('Error de conexión');
+    btn.disabled = false;
+  }
+}
+</script>

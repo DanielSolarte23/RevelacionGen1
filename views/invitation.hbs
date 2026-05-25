@@ -1,0 +1,203 @@
+<!-- Audio de fondo -->
+<audio id="bg-audio" loop>
+  <source src="/audio/narrador.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- Toast de notificaciones -->
+<div id="toast-message" class="toast"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     INTRO OVERLAY
+═══════════════════════════════════════════════════════════════ -->
+<div id="intro-overlay" class="intro-overlay">
+  <div class="intro-stars"></div>
+  <div class="intro-content">
+    <div class="intro-dragon-balls">
+      <div class="db-sphere db-1"></div>
+      <div class="db-sphere db-2"></div>
+      <div class="db-sphere db-3"></div>
+      <div class="db-sphere db-4"></div>
+      <div class="db-sphere db-5"></div>
+      <div class="db-sphere db-6"></div>
+      <div class="db-sphere db-7"></div>
+    </div>
+    <h1 class="intro-title">UNA NUEVA<br />AVENTURA<br />COMIENZA</h1>
+    <p class="intro-subtitle">
+      Daniel &amp; Lisseth<br />tienen un secreto que revelar...
+    </p>
+    <button id="btn-start" class="btn-start">
+      ▶&nbsp;&nbsp;DESCUBRIR
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CONTENIDO PRINCIPAL
+═══════════════════════════════════════════════════════════════ -->
+<div id="main-content" class="main-content hidden">
+
+  <!-- HERO ─────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-energy-ring"></div>
+    <div class="container hero-inner">
+      <p class="hero-eyebrow">✨ REVELACIÓN DE GÉNERO ✨</p>
+      <h1 class="hero-title">¿NIÑO<br />O NIÑA?</h1>
+      <div class="hero-parents-box">
+        <span class="hero-parents">Daniel Solarte &amp; Lisseth Muñoz</span>
+        <span class="hero-tagline">te invitan a descubrir el secreto más grande del universo</span>
+      </div>
+      <div class="hero-image-wrap">
+        <img src="/img/dragon-ball-hero.png" alt="" class="hero-img" onerror="this.style.display='none'" />
+        <div class="hero-img-fallback">🐉</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETALLES DEL EVENTO ─────────────────────────────────────── -->
+  <section class="event-details">
+    <div class="container">
+      <h2 class="section-title">DETALLES DEL EVENTO</h2>
+      <div class="details-grid">
+        <div class="detail-card">
+          <span class="detail-icon">📅</span>
+          <span class="detail-label">FECHA</span>
+          <span class="detail-value">Por confirmar</span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-icon">⏰</span>
+          <span class="detail-label">HORA</span>
+          <span class="detail-value">Por confirmar</span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-icon">📍</span>
+          <span class="detail-label">LUGAR</span>
+          <span class="detail-value">Por confirmar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREDICCIÓN ─────────────────────────────────────────────── -->
+  <section class="prediction-section">
+    <div class="container">
+      <h2 class="section-title">¿CUÁL ES TU PREDICCIÓN?</h2>
+      <p class="section-subtitle">¡Elige tu equipo y confirma tu asistencia!</p>
+
+      <div class="teams-grid">
+
+        <!-- Equipo Niño -->
+        <div class="team-card team-boy" onclick="openConfirmModal('boy')">
+          <div class="team-glow glow-boy"></div>
+          <div class="team-img-wrap">
+            <img src="/img/goku-bebe.png" alt="Goku Bebé" class="team-img" onerror="this.style.display='none'" />
+            <div class="team-img-fallback">👶💙</div>
+          </div>
+          <h3 class="team-name name-boy">EQUIPO NIÑO</h3>
+          <p class="team-gift">🍼 Trae pañales</p>
+          <button class="btn-team btn-boy">¡CONFIRMAR! 💙</button>
+        </div>
+
+        <!-- Equipo Niña -->
+        <div class="team-card team-girl" onclick="openConfirmModal('girl')">
+          <div class="team-glow glow-girl"></div>
+          <div class="team-img-wrap">
+            <img src="/img/pan-bebe.png" alt="Pan Bebé" class="team-img" onerror="this.style.display='none'" />
+            <div class="team-img-fallback">👶💗</div>
+          </div>
+          <h3 class="team-name name-girl">EQUIPO NIÑA</h3>
+          <p class="team-gift">🧻 Trae pañitos húmedos</p>
+          <button class="btn-team btn-girl">¡CONFIRMAR! 💗</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTADOR ──────────────────────────────────────────────── -->
+  <section class="counter-section">
+    <div class="container">
+      <h2 class="section-title">GUERREROS Z CONFIRMADOS</h2>
+      <div class="counter-total-wrap">
+        <span id="total-count" class="counter-big">0</span>
+        <span class="counter-big-label">guerreros confirmados</span>
+      </div>
+      <div class="vs-counter">
+        <div class="vc-team vc-boy">
+          <span class="vc-icon">💙</span>
+          <span id="team-boy-count" class="vc-number">0</span>
+          <span class="vc-label">Equipo Niño</span>
+        </div>
+        <div class="vc-divider">VS</div>
+        <div class="vc-team vc-girl">
+          <span class="vc-icon">💗</span>
+          <span id="team-girl-count" class="vc-number">0</span>
+          <span class="vc-label">Equipo Niña</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER ────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <p class="footer-main">🐉 Con amor, Daniel &amp; Lisseth 🐉</p>
+    <p class="footer-sub">El poder del ki revela todo</p>
+  </footer>
+
+</div><!-- /main-content -->
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MODAL DE CONFIRMACIÓN
+═══════════════════════════════════════════════════════════════ -->
+<div id="confirm-modal" class="modal-overlay" onclick="handleModalOverlayClick(event)">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div class="modal-header">
+      <span id="modal-pred-icon" class="modal-pred-icon">💙</span>
+      <h2 class="modal-title">CONFIRMAR ASISTENCIA</h2>
+      <p id="modal-pred-label" class="modal-pred-label label-boy">EQUIPO NIÑO</p>
+    </div>
+
+    <form id="confirm-form" onsubmit="return false;">
+      <div class="form-group">
+        <label for="guest-name">Nombre completo *</label>
+        <input type="text" id="guest-name" placeholder="¿Cómo te llamas, guerrero/a?" required />
+      </div>
+
+      <div class="form-group">
+        <label for="guest-phone">Teléfono <span class="label-optional">(opcional, evita duplicados)</span></label>
+        <input type="tel" id="guest-phone" placeholder="Ej: 3001234567" />
+      </div>
+
+      <div class="form-group">
+        <label for="guest-count">¿Cuántos asistirán?</label>
+        <select id="guest-count">
+          <option value="1">Solo yo (1 persona)</option>
+          <option value="2">2 personas</option>
+          <option value="3">3 personas</option>
+          <option value="4">4 personas</option>
+          <option value="5">5 personas</option>
+          <option value="6">6 personas</option>
+          <option value="7">7 personas</option>
+          <option value="8">8 personas</option>
+          <option value="9">9 personas</option>
+          <option value="10">10 personas</option>
+        </select>
+      </div>
+
+      <p id="form-error" class="form-error" style="display:none;"></p>
+
+      <p class="modal-whatsapp-label">¿Con quién confirmas?</p>
+      <div class="confirm-btn-group">
+        <button type="button" class="btn-confirm btn-confirm-dad" onclick="handleConfirm('daniel')">
+          📱 Papá Daniel
+        </button>
+        <button type="button" class="btn-confirm btn-confirm-mom" onclick="handleConfirm('lisseth')">
+          📱 Mamá Lisseth
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/main.js"></script>
