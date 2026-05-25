@@ -32,38 +32,69 @@
   <section class="hero">
     <div class="hero-energy-ring"></div>
     <div class="container hero-inner">
-      <p class="hero-eyebrow">REVELACIÓN DE GÉNERO</p>
-      <h1 class="hero-title">¿NIÑO<br />O NIÑA?</h1>
+      <div class="hero-duo">
+        <img src="/img/niña.png" alt="" class="hero-duo-img hero-duo-girl" onerror="this.style.display='none'" />
+        <img src="/img/niño.png" alt="" class="hero-duo-img hero-duo-boy" onerror="this.style.display='none'" />
+      </div>
+      <div class="title-pers"><h1 class="hero-title-boy">¿NIÑO</h1>
+      <h1 class="hero-title">O</h1></div>
+      <h1 class="hero-title-girl">NIÑA?</h1>
       <div class="hero-parents-box">
-        <span class="hero-parents">Daniel Solarte &amp; Lisseth Muñoz</span>
-        <span class="hero-tagline">te invitan a descubrir el secreto más grande del universo</span>
+        <span class="hero-parents">Daniel Solarte &amp; Lisseth Garzón</span>
       </div>
-      <div class="hero-image-wrap">
-        <img src="/img/Dragon.png" alt="" class="hero-img" onerror="this.style.display='none'" />
-      </div>
+      <p class="hero-description">
+        La espera está por terminar. Nuestro bebé está en camino y su poder aumenta
+        como en una transformación saiyajin.<br />
+        ¿Niño o niña? Ven a revelarlo junto a nosotros.
+      </p>
     </div>
   </section>
 
   <!-- DETALLES DEL EVENTO ─────────────────────────────────────── -->
   <section class="event-details">
     <div class="container">
-      <h2 class="section-title">DETALLES DEL EVENTO</h2>
-      <div class="details-grid">
-        <div class="detail-card">
-          <span class="detail-icon">📅</span>
-          <span class="detail-label">FECHA</span>
-          <span class="detail-value">Por confirmar</span>
+
+      <div class="event-blocks">
+
+        <!-- Fecha y hora -->
+        <div class="event-block">
+          <div class="event-block-divider"><span>CUÁNDO</span></div>
+          <div class="event-date-row">
+            <div class="event-date-item">
+              <span class="event-date-label">DÍA</span>
+              <span class="event-date-value">Por confirmar</span>
+            </div>
+            <div class="event-date-sep"></div>
+            <div class="event-date-item">
+              <span class="event-date-label">MES</span>
+              <span class="event-date-value">Por confirmar</span>
+            </div>
+            <div class="event-date-sep"></div>
+            <div class="event-date-item">
+              <span class="event-date-label">HORA</span>
+              <span class="event-date-value">00:00 hrs</span>
+            </div>
+          </div>
         </div>
-        <div class="detail-card">
-          <span class="detail-icon">⏰</span>
-          <span class="detail-label">HORA</span>
-          <span class="detail-value">Por confirmar</span>
+
+        <!-- Lugar -->
+        <div class="event-block">
+          <div class="event-block-divider"><span>DÓNDE</span></div>
+          <p class="event-address">Calle 1 #1-1</p>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps?q=Calle+1+%231-1,+Cali,+Colombia&output=embed"
+              width="100%"
+              height="200"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación del evento">
+            </iframe>
+          </div>
         </div>
-        <div class="detail-card">
-          <span class="detail-icon">📍</span>
-          <span class="detail-label">LUGAR</span>
-          <span class="detail-value">Por confirmar</span>
-        </div>
+
       </div>
     </div>
   </section>
@@ -71,7 +102,11 @@
   <!-- PREDICCIÓN ─────────────────────────────────────────────── -->
   <section class="prediction-section">
     <div class="container">
-      <h2 class="section-title">¿CUÁL ES TU PREDICCIÓN?</h2>
+      <h2 class="section-title">CONFIRMACIÓN</h2>
+      <p class="section-description">
+        Nos encantaría saber que nos acompañarás.<br />
+        Permítenos preparar los detalles confirmando aquí.
+      </p>
       <p class="section-subtitle">¡Elige tu equipo y confirma tu asistencia!</p>
 
       <div class="teams-grid">
@@ -128,13 +163,31 @@
     </div>
   </section>
 
+  <!-- DRAGÓN ─────────────────────────────────────────────────── -->
+  <div class="dragon-section">
+    <img src="/img/Dragon.png" alt="" class="dragon-center-img" onerror="this.style.display='none'" />
+  </div>
+
   <!-- FOOTER ────────────────────────────────────────────────── -->
   <footer class="footer">
-    <p class="footer-main">🐉 Con amor, Daniel &amp; Lisseth 🐉</p>
-    <p class="footer-sub">El poder del ki revela todo</p>
+    <p class="footer-main">Te esperamos</p>
+    <p class="footer-sub">Con amor, Daniel &amp; Lisseth</p>
   </footer>
 
 </div><!-- /main-content -->
+
+<!-- ═══════════════════════════════════════════════════════════════
+     BANNER WHATSAPP
+═══════════════════════════════════════════════════════════════ -->
+<div id="whatsapp-banner" class="whatsapp-banner">
+  <div class="whatsapp-banner-inner">
+    <p class="whatsapp-banner-text">¡Confirmación guardada!<br />Toca el botón para enviar tu mensaje</p>
+    <a id="whatsapp-banner-link" href="#" target="_blank" rel="noopener" class="whatsapp-banner-btn">
+      Abrir WhatsApp
+    </a>
+    <button id="whatsapp-banner-close" class="whatsapp-banner-close">✕</button>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════════
      MODAL DE CONFIRMACIÓN

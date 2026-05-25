@@ -106,8 +106,7 @@ async function handleConfirm(confirmedWith) {
       // localStorage.setItem('rv_confirmado', '1');
       closeModal();
       loadStats();
-      showToast('¡Confirmación guardada! Abriendo WhatsApp... 🐉', 'success');
-      setTimeout(() => window.open(data.whatsappUrl, '_blank'), 500);
+      showWhatsAppBanner(data.whatsappUrl);
     } else {
       showFormError(data.message || 'Error al confirmar. Intenta de nuevo.');
       btns.forEach((b) => (b.disabled = false));
@@ -167,6 +166,21 @@ function hideFormError() {
   formError.style.display = 'none';
   formError.textContent = '';
 }
+
+/* ═══════════════════════════════════════════════
+   Banner de WhatsApp (reemplaza window.open)
+═══════════════════════════════════════════════ */
+function showWhatsAppBanner(url) {
+  const banner = document.getElementById('whatsapp-banner');
+  const link   = document.getElementById('whatsapp-banner-link');
+  if (!banner || !link) return;
+  link.href = url;
+  banner.classList.add('show');
+}
+
+document.getElementById('whatsapp-banner-close')?.addEventListener('click', () => {
+  document.getElementById('whatsapp-banner')?.classList.remove('show');
+});
 
 /* ═══════════════════════════════════════════════
    Init
