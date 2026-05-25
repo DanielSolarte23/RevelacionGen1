@@ -36,10 +36,10 @@ document.getElementById('btn-start').addEventListener('click', () => {
    Modal — abrir
 ═══════════════════════════════════════════════ */
 function openConfirmModal(prediction) {
-  if (localStorage.getItem('rv_confirmado')) {
-    showToast('¡Ya confirmaste tu asistencia! Gracias 🐉', 'info');
-    return;
-  }
+  // if (localStorage.getItem('rv_confirmado')) {
+  //   showToast('¡Ya confirmaste tu asistencia! Gracias 🐉', 'info');
+  //   return;
+  // }
 
   selectedPrediction = prediction;
 
@@ -103,7 +103,7 @@ async function handleConfirm(confirmedWith) {
     const data = await res.json();
 
     if (data.success) {
-      localStorage.setItem('rv_confirmado', '1');
+      // localStorage.setItem('rv_confirmado', '1');
       closeModal();
       loadStats();
       showToast('¡Confirmación guardada! Abriendo WhatsApp... 🐉', 'success');
