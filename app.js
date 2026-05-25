@@ -17,6 +17,9 @@ app.engine('hbs', engine({
     allowProtoPropertiesByDefault: true,
     allowProtoMethodsByDefault: true,
   },
+  helpers: {
+    eq: (a, b) => a === b,
+  },
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
@@ -75,12 +78,12 @@ app.post('/confirm', async (req, res) => {
   } catch (error) {
     console.error('Error al confirmar:', error);
 
-    if (error.code === 11000) {
-      return res.status(400).json({
-        success: false,
-        message: 'Este número ya fue registrado anteriormente. ¡Gracias por confirmar!',
-      });
-    }
+    // if (error.code === 11000) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: 'Este número ya fue registrado anteriormente. ¡Gracias por confirmar!',
+    //   });
+    // }
 
     res.status(500).json({
       success: false,
